@@ -1,9 +1,20 @@
-import { formData } from "./form";
+import _ from "lodash";
+import "./style.css";
+import { print } from "./print";
 
-const form = document.querySelector("form")!;
+function component() {
+  const element: HTMLDivElement = document.createElement("div");
 
-form.addEventListener("submit", (e: Event) => {
-  e.preventDefault();
-  const data = formData(form);
-  console.log(data);
-});
+  const btn: HTMLButtonElement = document.createElement("button");
+
+  btn.innerHTML = "click";
+  btn.onclick = print;
+
+  element.innerHTML = _.join(["Hello", "webpack"], " ");
+  element.classList.add("hello");
+
+  element.appendChild(btn);
+  return element;
+}
+
+document.body.appendChild(component());
